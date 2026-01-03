@@ -1,35 +1,39 @@
-import App from "./App"
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-import Register from "./Pages/register"
-import Login from './Pages/Login'
-import './index.css'
-import { PainelEventos } from './Pages/aluno/PainelEventos'
+import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import "./index.css";
+import { PainelEventos } from "./pages/PainelEventos";
 
 const router = createBrowserRouter([
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '/',  
+    path: "/",
     element: <App />,
   },
 
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
   },
 
   {
-    path: '/aluno/painel-eventos',
-    element: <PainelEventos/>,
-  }
-])
- 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+    path: "/aluno/painel-eventos",
+    element: <PainelEventos />,
+  },
+  {
+    path: "/aluno/painel-eventos",
+    element: <PainelEventos />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>
-)
+);

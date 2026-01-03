@@ -1,8 +1,9 @@
-import Register from "./Pages/register"
-import { PainelEventos } from "./Pages/aluno/PainelEventos"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import Register from "./pages/Register";
+import { PainelEventos } from "./pages/PainelEventos";
 
 function App() {
-  return <PainelEventos />
+  return <PainelEventos />;
 }
 
-export default App
+export default App;

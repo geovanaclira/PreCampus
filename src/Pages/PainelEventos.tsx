@@ -1,10 +1,15 @@
-import { Card } from "../../Components/Cards/Card";
-import Header from "../../Components/HeaderMenu/Header";
+import { Card } from "../components/Cards/Card";
+import Header from "../components/HeaderMenu/Header";
 
 export function PainelEventos() {
-    return (
-        <>
-      <Header title="Painel de Eventos" username="Aislan" userType="Aluno" role="student"  />
+  return (
+    <>
+      <Header
+        title="Painel de Eventos"
+        username="Aislan"
+        userType="Aluno"
+        role="student"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 gap-4">
         <Card
@@ -40,5 +45,5 @@ export function PainelEventos() {
         />
       </div>
     </>
-    )
+  );
 }

@@ -1,74 +1,111 @@
+import axios from "axios";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+type LoginType = "student" | "institution";
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const [loginType, setLoginType] = useState<LoginType>("student");
+
   const [email, setEmail] = useState("");
+  const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{
-    email?: string;
-    password?: string;
-  }>({});
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  function buttonClass(type: LoginType) {
+    let base =
+      "w-full h-11 rounded-md border text-sm font-medium transition border-zinc-300 text-zinc-600 hover:border-blue-400";
 
-    const newErrors: typeof errors = {};
-    
-    if (!email) newErrors.email = "Email é obrigatório";
-    if (!password) newErrors.password = "Senha é obrigatória";
-
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Login enviado", { email, password });
+    if (type === loginType) {
+      base =
+        "w-full h-11 rounded-md border text-sm font-medium transition border-blue-700 bg-blue-50 text-blue-800";
     }
+
+    return base;
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      if (loginType === "student") {
+        await axios.post("/auth/login/student", {
+          email,
+          password,
+        });
+      } else {
+        await axios.post("/auth/login/institution", {
+          cnpj,
+          password,
+        });
+      }
+
+      navigate("/");
+    } catch {
+      alert("Credenciais inválidas");
+    }
+  };
+
   return (
-    <form className="px-6 px-[180px] space-y-5" onSubmit={handleSubmit}>
-      <div>
+    <form className="space-y-5 px-[180px]" onSubmit={handleSubmit}>
+      <div className="mb-6 flex gap-4">
+        <button
+          type="button"
+          className={buttonClass("student")}
+          onClick={() => setLoginType("student")}
+        >
+          Aluno
+        </button>
+
+        <button
+          type="button"
+          className={buttonClass("institution")}
+          onClick={() => setLoginType("institution")}
+        >
+          Instituição
+        </button>
+      </div>
+
+      {loginType === "student" && (
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-3 py-4 border border-sky-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-md border border-sky-600 px-3 py-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-      </div>
+      )}
 
-      <div>
+      {loginType === "institution" && (
         <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-3 py-4 border border-sky-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="text"
+          placeholder="CNPJ"
+          value={cnpj}
+          onChange={(e) => setCnpj(e.target.value)}
+          className="w-full rounded-md border border-sky-600 px-3 py-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
-      </div>
+      )}
 
-      <div className="flex items-center justify-between">
-        <label className="flex items-center gap-2 text-sm text-gray-600">
-          <input type="checkbox" className="rounded" />
-          Lembrar-me
-        </label>
-        <a href="#" className="text-sm text-blue-950 hover:underline">
-          Esqueceu a senha?
-        </a>
-      </div>
+      <input
+        type="password"
+        placeholder="Senha"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="w-full rounded-md border border-sky-600 px-3 py-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
 
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-sky-600 to-blue-950 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition"
+        className="w-full rounded-md bg-gradient-to-r from-sky-600 to-blue-950 py-3 font-semibold text-white transition hover:bg-blue-700"
       >
         ENTRAR
       </button>
 
-      <p className="text-center text-lg text-blue-950 mt-12">
+      <p className="mt-12 text-center text-lg text-blue-950">
         Não tem uma conta?{" "}
-        <a href="#" className="text-blue-600 hover:underline">
+        <Link to="/register" className="text-blue-600 hover:underline">
           Cadastre-se
-        </a>
+        </Link>
       </p>
     </form>
   );

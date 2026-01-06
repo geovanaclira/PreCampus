@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function LoginForm() {
+  const navegate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<{
@@ -66,9 +69,12 @@ function LoginForm() {
 
       <p className="text-center text-lg text-blue-950 mt-12">
         Não tem uma conta?{" "}
-        <a href="#" className="text-blue-600 hover:underline">
-          Cadastre-se
-        </a>
+        <span
+          className="text-blue-600 hover:underline cursor-pointer"
+          onClick={() => navegate("/register")}
+        >
+            Cadastre-se
+       </span>
       </p>
     </form>
   );

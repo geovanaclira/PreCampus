@@ -1,7 +1,7 @@
 import App from "./App"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate} from 'react-router-dom'
 import Register from "./Pages/register"
 import Login from './Pages/Login'
 import './index.css'
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',  
-    element: <App />,
+    element: <Navigate to="/login"  />,
   },
 
   {

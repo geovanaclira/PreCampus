@@ -52,22 +52,22 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+    <div className="grid min-h-screen grid-cols-1 overflow-y-hidden lg:grid-cols-2">
       {/* IMAGEM */}
-      <div className="hidden lg:flex bg-blue-50 items-center justify-center p-12">
-        <img src={illustration} alt="Ilustração" className="max-w-lg w-full" />
+      <div className="hidden items-center justify-center bg-[#F5F9FE] p-12 lg:flex">
+        <img src={illustration} alt="Ilustração" className="w-full max-w-lg" />
       </div>
 
       {/* FORMULÁRIO */}
       <div className="flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-lg">
-          <h1 className="text-3xl font-semibold text-blue-900 mb-8">
+          <h1 className="mb-8 text-3xl font-semibold text-blue-900">
             Cadastre-se
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <p className="text-sm font-medium text-zinc-700 mb-3">Você é?</p>
+              <p className="mb-3 text-sm font-medium text-zinc-700">Você é?</p>
               <div className="grid grid-cols-2 gap-3">
                 {["Aluno", "Empresa", "Escola", "Universidade"].map((item) => (
                   <button
@@ -168,10 +168,10 @@ export default function Register() {
 
             <button
               disabled={!formValido}
-              className={`w-full h-12 rounded-md text-sm font-semibold transition ${
+              className={`h-12 w-full rounded-md text-sm font-semibold transition ${
                 formValido
                   ? "bg-blue-900 text-white hover:bg-blue-800"
-                  : "bg-zinc-300 text-zinc-500 cursor-not-allowed"
+                  : "cursor-not-allowed bg-zinc-300 text-zinc-500"
               }`}
             >
               CADASTRAR

@@ -1,16 +1,11 @@
 interface ButtonProps {
-  text: string
+  text: string;
 }
 
 export function Button({ text }: ButtonProps) {
   return (
-    <button
-      className="h-11 w-full rounded-md bg-violet-600 text-white font-semibold
-                 hover:bg-violet-700 transition"
-    >
+    <button className="h-11 w-full rounded-md bg-violet-600 font-semibold text-white transition hover:bg-violet-700">
       {text}
     </button>
-  )
+  );
 }
-
-

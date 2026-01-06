@@ -1,39 +1,39 @@
-import App from "./App";
+import axios from "axios";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import "./index.css";
-import { PainelEventos } from "./pages/PainelEventos";
+import PainelEventos from "./pages/PainelEventos";
+import MainLayout from "./layouts/MainLayout";
+import Profile from "./pages/Profile";
 
-const router = createBrowserRouter([
-  {
-    path: "/register",
-    element: <Register />,
-  },
+axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
+axios.defaults.withCredentials = true;
+
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    Component: MainLayout,
+    children: [
+      { index: true, Component: PainelEventos },
+      { path: "/profile", Component: Profile },
+    ],
   },
-
   {
     path: "/login",
-    element: <Login />,
-  },
-
-  {
-    path: "/aluno/painel-eventos",
-    element: <PainelEventos />,
+    Component: Login,
   },
   {
-    path: "/aluno/painel-eventos",
-    element: <PainelEventos />,
+    path: "/register",
+    Component: Register,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

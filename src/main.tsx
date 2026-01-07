@@ -1,35 +1,39 @@
-import App from "./App"
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Navigate} from 'react-router-dom'
-import Register from "./Pages/register"
-import Login from './Pages/Login'
-import './index.css'
-import { PainelEventos } from './Pages/aluno/PainelEventos'
+import axios from "axios";
 
-const router = createBrowserRouter([
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import "./index.css";
+import PainelEventos from "./pages/PainelEventos";
+import MainLayout from "./layouts/MainLayout";
+import Profile from "./pages/Profile";
+
+axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
+axios.defaults.withCredentials = true;
+
+export const router = createBrowserRouter([
   {
-    path: '/register',
-    element: <Register />,
+    path: "/",
+    Component: MainLayout,
+    children: [
+      { index: true, Component: PainelEventos },
+      { path: "/profile", Component: Profile },
+    ],
   },
   {
-    path: '/',  
-    element: <Navigate to="/login"  />,
+    path: "/login",
+    Component: Login,
   },
-
   {
-    path: '/login',
-    element: <Login />,
+    path: "/register",
+    Component: Register,
   },
+]);
 
-  {
-    path: '/aluno/painel-eventos',
-    element: <PainelEventos/>,
-  }
-])
- 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+);

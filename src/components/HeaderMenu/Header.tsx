@@ -12,7 +12,8 @@ export default function Header() {
 
   if (!user) return null;
 
-  const config = headerConfig[user.role];
+  const config = headerConfig[user?.role];
+  if (!config) return null;
 
   return (
     <>

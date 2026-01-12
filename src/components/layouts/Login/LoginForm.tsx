@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 
 type LoginType = "student" | "institution";
@@ -7,7 +8,6 @@ type LoginType = "student" | "institution";
 function LoginForm() {
   const navigate = useNavigate();
   const [loginType, setLoginType] = useState<LoginType>("student");
-
   const [email, setEmail] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
@@ -103,9 +103,11 @@ function LoginForm() {
 
       <p className="mt-12 text-center text-lg text-blue-950">
         Não tem uma conta?{" "}
+
         <Link to="/register" className="text-blue-600 hover:underline">
           Cadastre-se
         </Link>
+
       </p>
     </form>
   );

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import AuthLayout from "../components/layouts/Auth/AuthLayout";
-import RegisterHeader from "../components/layouts/Register/RegisterHeader";
-import RegisterTypeSelector from "../components/layouts/Register/RegisterTypeSelector";
-import StudentRegisterForm from "../components/layouts/Register/StudentRegisterForm";
-import SchoolRegisterForm from "../components/layouts/Register/SchoolRegisterForm";
-import UniversityRegisterForm from "../components/layouts/Register/UniversityRegisterForm";
-import RegisterSubmitButton from "../components/layouts/Register/RegisterSubmitButton";
+import RegisterHeader from "../components_temp/layouts/Register/RegisterHeader";
+import RegisterTypeSelector from "../components_temp/layouts/Register/RegisterTypeSelector";
 import type { RegisterType } from "../types/Register";
+import StudentRegisterForm from "../components_temp/layouts/Register/StudentRegisterForm";
+import SchoolRegisterForm from "../components_temp/layouts/Register/SchoolRegisterForm";
+import UniversityRegisterForm from "../components_temp/layouts/Register/UniversityRegisterForm";
+import RegisterSubmitButton from "../components_temp/layouts/Register/RegisterSubmitButton";
+import AuthLayout from "../components_temp/layouts/Auth/AuthLayout";
 
 export default function Register() {
   const [type, setType] = useState<RegisterType>("student");

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Card } from "../components/Cards/Card";
 import { useHeader } from "../contexts/HeaderContext";
+import { Card } from "../components_temp/Cards/Card";
 
 const PainelEventos = () => {
   const { setTitle } = useHeader();

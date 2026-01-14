@@ -1,6 +1,6 @@
 const LoginHeader = () => {
   return (
-    <div className="px-[180px]">
+    <div>
       <div className="ml-27 flex justify-start">
         <img
           className="w-45"

@@ -47,7 +47,7 @@ function LoginForm() {
   };
 
   return (
-    <form className="space-y-5 px-[180px]" onSubmit={handleSubmit}>
+    <form className="space-y-5" onSubmit={handleSubmit}>
       <div className="mb-6 flex gap-4">
         <button
           type="button"
@@ -103,11 +103,9 @@ function LoginForm() {
 
       <p className="mt-12 text-center text-lg text-blue-950">
         Não tem uma conta?{" "}
-
         <Link to="/register" className="text-blue-600 hover:underline">
           Cadastre-se
         </Link>
-
       </p>
     </form>
   );

@@ -1,13 +1,13 @@
-import LoginLayout from "../components/layouts/Login/LoginLayout";
 import LoginHeader from "../components/layouts/Login/LoginHeader";
 import { LoginForm } from "../components/layouts/Login/LoginForm";
+import AuthLayout from "../components/layouts/Auth/AuthLayout";
 
 function Login() {
   return (
-    <LoginLayout>
+    <AuthLayout>
       <LoginHeader />
       <LoginForm />
-    </LoginLayout>
+    </AuthLayout>
   );
 }
 

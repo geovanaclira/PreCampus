@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { HeaderContext } from "../contexts/HeaderContext";
 import type { User } from "../types/User";
-import Header from "../components/HeaderMenu/Header";
+import Header from "../components_temp/HeaderMenu/Header";
+
 
 const MainLayout = () => {
   const [user, setUser] = useState<User | null>(null);

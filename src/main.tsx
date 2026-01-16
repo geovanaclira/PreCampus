@@ -8,10 +8,10 @@ import "./index.css";
 import MainLayout from "./layouts/MainLayout";
 import Profile from "./Pages/Profile";
 import Register from "./Pages/register";
+import Favorites from "./Pages/Favorites"
 import RecoverRequest from "./Pages/PasswordRecovery/Request";
 import RecoverReset from "./Pages/PasswordRecovery/Reset";
 import RecoverSuccess from "./Pages/PasswordRecovery/Sucess";
-
 
 axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -22,7 +22,8 @@ export const router = createBrowserRouter([
     Component: MainLayout,
     children: [
       { index: true, element: <Navigate to="/login" replace /> },
-      { path: "/profile", Component: Profile },
+      { path: "profile", Component: Profile },
+      {path: "favorites", Component: Favorites}
     ],
   },
   {

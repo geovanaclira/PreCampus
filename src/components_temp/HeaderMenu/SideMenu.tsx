@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { headerConfig } from "./header.config";
 import HeaderNav from "./HeaderNav";
 import HeaderUser from "./HeaderUser";
+ 
 
 interface Props {
   open: boolean;

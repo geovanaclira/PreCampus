@@ -12,6 +12,8 @@ import Favorites from "./Pages/Favorites"
 import RecoverRequest from "./Pages/PasswordRecovery/Request";
 import RecoverReset from "./Pages/PasswordRecovery/Reset";
 import RecoverSuccess from "./Pages/PasswordRecovery/Sucess";
+import { Event } from "./Pages/event";
+ 
 
 axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -24,6 +26,7 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/login" replace /> },
       { path: "profile", Component: Profile },
       {path: "favorites", Component: Favorites}
+        
     ],
   },
   {
@@ -47,10 +50,15 @@ export const router = createBrowserRouter([
   Component: RecoverSuccess,
 },
 
+{
+ path: "/event",
+    Component: Event
+}
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
+  <React.StrictMode>     
+      <RouterProvider router={router} />   
   </React.StrictMode>,
 );

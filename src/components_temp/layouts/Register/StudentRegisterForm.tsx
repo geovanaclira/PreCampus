@@ -21,7 +21,7 @@ const StudentRegisterForm = () => {
       cep: "",
     },
 
-    monthlyIncome: "",
+    monthlyIncome: 0,
 
     guardian: {
       fullName: "",
@@ -100,6 +100,30 @@ const StudentRegisterForm = () => {
           setForm({ ...form, address: { ...form.address, cep: v } })
         }
       />
+
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-medium text-zinc-700">
+          Renda familiar mensal
+        </label>
+
+        <select
+          value={form.monthlyIncome}
+          onChange={(e) =>
+            setForm((prev) => ({
+              ...prev,
+              monthlyIncome: Number(e.target.value),
+            }))
+          }
+          className="h-11 rounded-md border border-zinc-300 px-3 focus:ring-2 focus:ring-violet-500 focus:outline-none"
+          required
+        >
+          <option value={0}>Selecione</option>
+          <option value={1}>Até 1 salário mínimo</option>
+          <option value={2}>De 1 a 2 salários mínimos</option>
+          <option value={3}>De 2 a 3 salários mínimos</option>
+          <option value={4}>Acima de 3 salários mínimos</option>
+        </select>
+      </div>
 
       {/*---------- DADOS RESPONSÁVEL ---------- */}
       <div className="bg-admin h-[1px] w-full"></div>

@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type CardVariant = "aluno" | "universidade" | "escola";
 
@@ -20,7 +21,10 @@ export function Card({
   const heartColor = variant === "aluno" ? "#D84E2F" : "#006607";
 
   return (
-    <div className="h-fit w-64 overflow-hidden rounded-xl bg-white shadow-md">
+    <Link
+      to={"/event"}
+      className="h-fit w-64 overflow-hidden rounded-xl bg-white shadow-md"
+    >
       <img
         src={imageUrl}
         alt="Imagem Evento"
@@ -39,6 +43,6 @@ export function Card({
           />
         </button>
       </div>
-    </div>
+    </Link>
   );
 }

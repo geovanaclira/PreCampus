@@ -1,4 +1,11 @@
-import { Calendar, User, Heart, BarChart3, Plus } from "lucide-react";
+import {
+  Calendar,
+  User,
+  Heart,
+  BarChart3,
+  Plus,
+  CalendarCheck,
+} from "lucide-react";
 
 import LogoStudent from "../../assets/img/logoPreCampus.png";
 import LogoInstitution from "../../assets/img/logoInstitution.png";
@@ -14,7 +21,8 @@ export const headerConfig = {
     menu: [
       { name: "Eventos", icon: Calendar, to: "/" },
       { name: "Perfil", icon: User, to: "/profile" },
-      { name: "Meus Eventos", icon: Heart, to: "/favorites" },
+      { name: "Meus Eventos", icon: CalendarCheck, to: "/my-events" },
+      { name: "Favoritos", icon: Heart, to: "/favorites" },
     ],
   },
 

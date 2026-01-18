@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { Input } from "../../input";
 
 const StudentRegisterForm = () => {
+  const [useSameAddress, setUseSameAddress] = useState(false);
+
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -41,6 +44,7 @@ const StudentRegisterForm = () => {
 
   return (
     <>
+      {/*---------- DADOS ALUNO ----------*/}
       <Input label="Nome completo" />
       <Input label="Email" />
       <Input type="password" label="Senha" />
@@ -52,21 +56,26 @@ const StudentRegisterForm = () => {
 
       <p className="text-sm font-medium text-zinc-700">Endereço</p>
 
-      <Input
-        label="Rua"
-        value={form.address.street}
-        onChange={(v) =>
-          setForm({ ...form, address: { ...form.address, street: v } })
-        }
-      />
-
-      <Input
-        label="Número"
-        value={form.address.number}
-        onChange={(v) =>
-          setForm({ ...form, address: { ...form.address, number: v } })
-        }
-      />
+      <div className="flex gap-5">
+        <div className="w-[70%]">
+          <Input
+            label="Rua"
+            value={form.address.street}
+            onChange={(v) =>
+              setForm({ ...form, address: { ...form.address, street: v } })
+            }
+          />
+        </div>
+        <div className="w-[30%]">
+          <Input
+            label="Número"
+            value={form.address.number}
+            onChange={(v) =>
+              setForm({ ...form, address: { ...form.address, number: v } })
+            }
+          />
+        </div>
+      </div>
 
       <Input
         label="Cidade"
@@ -92,6 +101,9 @@ const StudentRegisterForm = () => {
         }
       />
 
+      {/*---------- DADOS RESPONSÁVEL ---------- */}
+      <div className="bg-admin h-[1px] w-full"></div>
+
       <p className="text-sm font-medium text-zinc-700">Dados do responsável</p>
       <Input
         label="Nome completo"
@@ -100,25 +112,48 @@ const StudentRegisterForm = () => {
           setForm({ ...form, guardian: { ...form.guardian, fullName: v } })
         }
       />
-      <Input
-        label="Parentesco (Pai, Mãe ou Outro)"
-        value={form.guardian.relationship}
-        onChange={(v) =>
-          setForm({ ...form, guardian: { ...form.guardian, relationship: v } })
-        }
-      />
+
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-medium text-zinc-700">Parentesco</label>
+
+        <select
+          value={form.guardian.relationship}
+          onChange={(e) =>
+            setForm((prev) => ({
+              ...prev,
+              guardian: {
+                ...prev.guardian,
+                relationship: e.target.value,
+                otherRelationship: "",
+              },
+            }))
+          }
+          className="h-11 rounded-md border border-zinc-300 px-3 focus:ring-2 focus:ring-violet-500 focus:outline-none"
+          required
+        >
+          <option value="">Selecione</option>
+          <option value="Pai">Pai</option>
+          <option value="Mãe">Mãe</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
       {form.guardian.relationship === "Outro" && (
         <Input
           label="Informe o parentesco"
           value={form.guardian.otherRelationship}
-          onChange={(v) =>
-            setForm({
-              ...form,
-              guardian: { ...form.guardian, otherRelationship: v },
-            })
+          onChange={(value) =>
+            setForm((prev) => ({
+              ...prev,
+              guardian: {
+                ...prev.guardian,
+                otherRelationship: value,
+              },
+            }))
           }
         />
       )}
+
       <Input
         label="CPF"
         value={form.guardian.cpf}
@@ -134,41 +169,72 @@ const StudentRegisterForm = () => {
           setForm({ ...form, guardian: { ...form.guardian, email: v } })
         }
       />
+
+      <label className="flex items-center gap-2 text-sm text-zinc-700">
+        <input
+          type="checkbox"
+          checked={useSameAddress}
+          onChange={(e) => {
+            const checked = e.target.checked;
+            setUseSameAddress(checked);
+
+            if (checked) {
+              setForm((prev) => ({
+                ...prev,
+                guardian: {
+                  ...prev.guardian,
+                  address: { ...prev.address },
+                },
+              }));
+            }
+          }}
+        />
+        Usar o mesmo endereço do aluno
+      </label>
+
       <p className="text-sm font-medium text-zinc-700">
         Endereço do responsável
       </p>
 
-      <Input
-        label="Rua"
-        value={form.guardian.address.street}
-        onChange={(v) =>
-          setForm({
-            ...form,
-            guardian: {
-              ...form.guardian,
-              address: { ...form.guardian.address, street: v },
-            },
-          })
-        }
-      />
-
-      <Input
-        label="Número"
-        value={form.guardian.address.number}
-        onChange={(v) =>
-          setForm({
-            ...form,
-            guardian: {
-              ...form.guardian,
-              address: { ...form.guardian.address, number: v },
-            },
-          })
-        }
-      />
+      <div className="flex gap-5">
+        <div className="w-[70%]">
+          <Input
+            label="Rua"
+            value={form.guardian.address.street}
+            disabled={useSameAddress}
+            onChange={(v) =>
+              setForm({
+                ...form,
+                guardian: {
+                  ...form.guardian,
+                  address: { ...form.guardian.address, street: v },
+                },
+              })
+            }
+          />
+        </div>
+        <div className="w-[30%]">
+          <Input
+            label="Número"
+            value={form.guardian.address.number}
+            disabled={useSameAddress}
+            onChange={(v) =>
+              setForm({
+                ...form,
+                guardian: {
+                  ...form.guardian,
+                  address: { ...form.guardian.address, number: v },
+                },
+              })
+            }
+          />
+        </div>
+      </div>
 
       <Input
         label="Cidade"
         value={form.guardian.address.city}
+        disabled={useSameAddress}
         onChange={(v) =>
           setForm({
             ...form,
@@ -183,6 +249,7 @@ const StudentRegisterForm = () => {
       <Input
         label="Estado"
         value={form.guardian.address.state}
+        disabled={useSameAddress}
         onChange={(v) =>
           setForm({
             ...form,
@@ -197,6 +264,7 @@ const StudentRegisterForm = () => {
       <Input
         label="CEP"
         value={form.guardian.address.cep}
+        disabled={useSameAddress}
         onChange={(v) =>
           setForm({
             ...form,
@@ -208,15 +276,7 @@ const StudentRegisterForm = () => {
         }
       />
 
-      {/* <Input label="Nome completo do responsável" />
-
-      <div className="grid grid-cols-2 gap-4">
-        <Input label="Parentesco" />
-        <Input label="CPF" />
-      </div>
-
-      <Input label="Email do responsável" />
-      <Input label="Endereço do responsável" /> */}
+      <div className="bg-admin h-[1px] w-full"></div>
 
       <p className="text-sm font-medium text-zinc-700">Cursos de interesse</p>
       <Input placeholder="Opção 01" />

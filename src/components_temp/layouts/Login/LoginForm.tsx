@@ -94,16 +94,23 @@ function LoginForm() {
         className="w-full rounded-md border border-sky-600 px-3 py-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
       />
 
+      <Link
+        to={"/recover-password"}
+        className="mb-8 block text-right text-sm text-[#0A66C2] hover:underline"
+      >
+        Esqueceu a senha?
+      </Link>
+
       <button
         type="submit"
-        className="w-full rounded-md bg-gradient-to-r from-sky-600 to-blue-950 py-3 font-semibold text-white transition hover:bg-blue-700"
+        className="w-full rounded-md bg-linear-to-r from-sky-600 to-blue-950 py-3 font-semibold text-white transition hover:bg-blue-700"
       >
         ENTRAR
       </button>
 
-      <p className="mt-12 text-center text-lg text-blue-950">
+      <p className="mt-5 text-center text-2sm text-blue-950">
         Não tem uma conta?{" "}
-        <Link to="/register" className="text-blue-600 hover:underline">
+        <Link to="/register" className="text-[#0A66C2] hover:underline">
           Cadastre-se
         </Link>
       </p>

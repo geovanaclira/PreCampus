@@ -18,13 +18,13 @@ export default function Header() {
   return (
     <>
       <header
-        className={`${config.bgColor} flex h-40 items-center px-6 text-white shadow-md`}
+        className={`${config.bgColor} flex h-30 items-center px-6 text-white shadow-md`}
       >
         <button onClick={() => setOpen(true)}>
           <Menu size={38} />
         </button>
 
-        <h1 className="ml-auto text-5xl font-bold">{title}</h1>
+        <h1 className="ml-auto font-bold text-xl sm:text-2xl md:text-4xl">{title}</h1>
       </header>
 
       <HeaderMenu open={open} onClose={() => setOpen(false)} />

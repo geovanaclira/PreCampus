@@ -34,8 +34,8 @@ export default function SideMenu({ open, onClose }: Props) {
   return (
     <aside
       className={`custom-scrollbar fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto bg-white shadow-xl transition-transform ${
-        open ? "translate-x-0" : "-translate-x-full"
-      }`}
+        open ? "translate-x-0" : "-translate-x-full  "
+      } xl:translate-x-0 `}
     >
       <HeaderUser />
 
@@ -48,12 +48,12 @@ export default function SideMenu({ open, onClose }: Props) {
       <div className="mt-auto flex flex-col items-center gap-4 py-6">
         <button onClick={logout} className={`${config.textColor}`}>
           <LogOut size={22} />
-        </button>
+        </button> 
       </div>
 
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-gray-400"
+        className="xl:hidden absolute cursor-pointer top-4 right-4 text-gray-400"
       >
         <X size={22} />
       </button>

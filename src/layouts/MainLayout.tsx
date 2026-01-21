@@ -8,7 +8,6 @@ import { HeaderContext } from "../contexts/HeaderContext";
 import type { User } from "../types/User";
 import Header from "../components_temp/HeaderMenu/Header";
 
-
 const MainLayout = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -34,8 +33,18 @@ const MainLayout = () => {
     loadProfile();
   }, []);
 
+  async function refreshUser() {
+    const { data } = await axios.get("/auth/profile");
+    setUser(data);
+  }
+
+  async function updateUser(data: Partial<User>) {
+    await axios.patch("/users/me", data);
+    await refreshUser();
+  }
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, refreshUser, updateUser }}>
       <HeaderContext.Provider value={{ title, setTitle }}>
         {!shouldHideHeader && user && <Header />}
 

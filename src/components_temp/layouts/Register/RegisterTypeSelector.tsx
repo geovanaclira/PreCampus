@@ -1,4 +1,4 @@
-import type { RegisterType } from "../../../types/Register";
+import type { RegisterType } from "../../../types/RegisterType";
 
 interface Props {
   value: RegisterType;

@@ -46,7 +46,7 @@ export default function SideMenu({ open, onClose }: Props) {
       </div>
 
       <div className="mt-auto flex flex-col items-center gap-4 py-6">
-        <button onClick={logout} className={`${config.textColor}`}>
+        <button onClick={logout} className={`${config.textColor} cursor-pointer`}>
           <LogOut size={22} />
         </button> 
       </div>

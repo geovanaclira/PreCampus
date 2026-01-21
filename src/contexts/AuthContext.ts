@@ -4,6 +4,8 @@ import type { User } from "../types/User";
 type AuthContextType = {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  refreshUser: () => Promise<void>;
+  updateUser: (data: Partial<User>) => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(

@@ -30,7 +30,7 @@ export function Input({
         type={type}
         value={value}
         onChange={handleChange}
-        className="h-11 rounded-md border border-zinc-300 px-3 focus:ring-2 focus:ring-violet-500 focus:outline-none"
+        className="h-11 rounded-md border border-zinc-300 bg-white px-3 focus:ring-2 focus:ring-violet-500 focus:outline-none"
         {...rest}
         required
       />

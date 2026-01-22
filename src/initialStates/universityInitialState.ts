@@ -27,6 +27,7 @@ export const universityInitialState: UniversityFormState = {
 
   address: {
     street: "",
+    number: "",
     city: "",
     state: "",
     cep: "",

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import type { SchoolFormState } from "../../../types/SchoolFormState";
 import { Input } from "../../input";
+import { SchoolYearCountFields } from "../../forms/school/SchoolYearCountFields";
+import { AddressSection } from "../../forms/AddressSection";
 
 interface SchoolRegisterFormProps {
   form: SchoolFormState;
@@ -65,140 +67,34 @@ const SchoolRegisterForm = ({ form, setForm }: SchoolRegisterFormProps) => {
 
       <div className="bg-admin h-px w-full"></div>
 
-      <p className="text-sm font-medium">Endereço</p>
-
-      <Input
-        label="Rua"
-        value={form.address.street}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, street: v },
-          }))
-        }
+      <AddressSection
+        title="Endereço"
+        address={form.address}
+        onChange={(address) => setForm((prev) => ({ ...prev, address }))}
       />
 
-      <div className="grid grid-cols-2 gap-4">
-        <Input
-          label="Número"
-          value={form.address.number}
-          onChange={(v) =>
-            setForm((prev) => ({
-              ...prev,
-              address: { ...prev.address, number: v },
-            }))
-          }
-        />
-        <Input
-          label="CEP"
-          value={form.address.cep}
-          onChange={(v) =>
-            setForm((prev) => ({
-              ...prev,
-              address: { ...prev.address, cep: v },
-            }))
-          }
-        />
-      </div>
+      <div className="bg-admin h-px w-full"></div>
 
-      <Input
-        label="Cidade"
-        value={form.address.city}
-        onChange={(v) =>
+      <SchoolYearCountFields
+        title="Turmas"
+        values={form.classes}
+        onChange={(values) =>
           setForm((prev) => ({
             ...prev,
-            address: { ...prev.address, city: v },
-          }))
-        }
-      />
-
-      <Input
-        label="Estado"
-        value={form.address.state}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, state: v },
+            classes: values,
           }))
         }
       />
 
       <div className="bg-admin h-px w-full"></div>
 
-      <p className="text-sm font-medium">Turmas</p>
-
-      <Input
-        type="number"
-        label="1º ano"
-        value={String(form.classes.firstYear)}
-        onChange={(v) =>
+      <SchoolYearCountFields
+        title="Quantidade de alunos"
+        values={form.studentsCount}
+        onChange={(values) =>
           setForm((prev) => ({
             ...prev,
-            classes: { ...prev.classes, firstYear: Number(v) },
-          }))
-        }
-      />
-
-      <Input
-        type="number"
-        label="2º ano"
-        value={String(form.classes.secondYear)}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            classes: { ...prev.classes, secondYear: Number(v) },
-          }))
-        }
-      />
-
-      <Input
-        type="number"
-        label="3º ano"
-        value={String(form.classes.thirdYear)}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            classes: { ...prev.classes, thirdYear: Number(v) },
-          }))
-        }
-      />
-
-      <div className="bg-admin h-px w-full"></div>
-
-      <p className="text-sm font-medium">Quantidade de alunos</p>
-
-      <Input
-        type="number"
-        label="1º ano"
-        value={String(form.studentsCount.firstYear)}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            studentsCount: { ...form.studentsCount, firstYear: Number(v) },
-          }))
-        }
-      />
-
-      <Input
-        type="number"
-        label="2º ano"
-        value={String(form.studentsCount.secondYear)}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            studentsCount: { ...form.studentsCount, secondYear: Number(v) },
-          }))
-        }
-      />
-
-      <Input
-        type="number"
-        label="3º ano"
-        value={String(form.studentsCount.thirdYear)}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            studentsCount: { ...form.studentsCount, thirdYear: Number(v) },
+            studentsCount: values,
           }))
         }
       />

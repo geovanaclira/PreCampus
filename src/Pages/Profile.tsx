@@ -8,6 +8,7 @@ import StudentProfileAddressSection from "../components_temp/layouts/Profile/Stu
 import StudentProfileGuardianSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileGuardianSection";
 import StudentProfileInterestsSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileInterestsSection";
 import SchoolProfileSection from "../components_temp/layouts/Profile/SchoolSections/SchoolProfileSection";
+import UniversityProfileSection from "../components_temp/layouts/Profile/UniversitySections/UniversityProfileSection";
 
 const Profile = () => {
   const { setTitle } = useHeader();
@@ -32,6 +33,21 @@ const Profile = () => {
 
       {user.role === "school" && (
         <SchoolProfileSection user={user as SchoolUser} />
+      )}
+
+      {user.role === "university" && (
+        <UniversityProfileSection
+          initialData={{
+            corporateName: user.corporateName,
+            email: user.email,
+            phone: user.phone,
+            description: user.description,
+            courses: user.courses,
+            website: user.website ?? "",
+            socialLinks: user.socialLinks ?? [{ name: "", url: "" }],
+            address: user.address,
+          }}
+        />
       )}
     </div>
   );

@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { useAuth } from "../contexts/AuthContext";
-import StudentProfileSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileSection";
-import AddressSection from "../components_temp/layouts/Profile/AddressSection";
-import GuardianSection from "../components_temp/layouts/Profile/StudentSections/GuardianSection";
+
+import type { StudentUser } from "../types/User";
+import StudentProfileMainSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileMainSection";
+import StudentProfileAddressSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileAddressSection";
+import StudentProfileGuardianSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileGuardianSection";
+import StudentProfileInterestsSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileInterestsSection";
 
 const Profile = () => {
   const { setTitle } = useHeader();
-  const { user, updateUser } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     setTitle("Meu Perfil");
-  }, []);
+  }, [setTitle]);
 
   if (!user) return null;
 
@@ -19,35 +22,10 @@ const Profile = () => {
     <div className="flex flex-col items-center py-4">
       {user.role === "student" && (
         <div className="flex w-full flex-col items-center gap-4">
-          <StudentProfileSection
-            initialData={{
-              name: user.fullName,
-              email: user.email,
-              phone: user.phone,
-              birthDate: user.birthDate,
-              monthlyIncome: user.monthlyIncome,
-              interestedCourses: user.interestedCourses,
-              interestedUniversities: user.interestedUniversities,
-            }}
-          />
-
-          {user.address && (
-            <AddressSection
-              title="Endereço do Aluno"
-              initialAddress={user.address}
-              onSave={(address) => updateUser({ address })}
-            />
-          )}
-
-          {user.guardian && (
-            <GuardianSection
-              initialGuardian={user.guardian}
-              onSaveGuardian={(guardian) => updateUser({ guardian })}
-              onSaveAddress={(address) =>
-                updateUser({ guardian: { ...user.guardian!, address } })
-              }
-            />
-          )}
+          <StudentProfileMainSection user={user as StudentUser} />
+          <StudentProfileAddressSection user={user as StudentUser} />
+          <StudentProfileGuardianSection user={user as StudentUser} />
+          <StudentProfileInterestsSection user={user as StudentUser} />
         </div>
       )}
     </div>

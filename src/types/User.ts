@@ -2,6 +2,15 @@ import type { Address } from "./AddressType";
 
 export type Role = "student" | "school" | "university" | "admin";
 
+export interface Course {
+  name: string;
+  description: string;
+}
+
+export interface SocialLink {
+  name: string;
+  url: string;
+}
 export interface BaseUser {
   id: string;
   email: string;
@@ -16,12 +25,14 @@ export interface StudentUser extends BaseUser {
   monthlyIncome: number;
   interestedCourses: string[];
   interestedUniversities: string[];
-  address?: Address;
+  address: Address;
   guardian?: {
     fullName: string;
+    cpf: string;
     relationship: string;
     email: string;
-    address?: Address;
+    otherRelationship?: string;
+    address: Address;
   };
 }
 
@@ -31,6 +42,18 @@ export interface SchoolUser extends BaseUser {
   corporateName: string;
   phone: string;
   address: Address;
+
+  classes: {
+    firstYear: number;
+    secondYear: number;
+    thirdYear: number;
+  };
+
+  studentsCount: {
+    firstYear: number;
+    secondYear: number;
+    thirdYear: number;
+  };
 }
 
 /* ===================== UNIVERSITY ===================== */
@@ -39,6 +62,10 @@ export interface UniversityUser extends BaseUser {
   corporateName: string;
   phone: string;
   description: string;
+  courses: Course[];
+  website?: string;
+  socialLinks: SocialLink[];
+  address: Address;
 }
 
 export type User = StudentUser | SchoolUser | UniversityUser;

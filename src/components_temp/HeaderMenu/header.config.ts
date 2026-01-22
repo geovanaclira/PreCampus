@@ -44,6 +44,7 @@ export const headerConfig = {
     textColor: "text-instituicao",
     menu: [
       { name: "Dashboard", icon: BarChart3, to: "/dashboard" },
+      { name: "Perfil", icon: User, to: "/profile" },
       { name: "Criar Evento", icon: Plus, to: "/events/create" },
     ],
   },

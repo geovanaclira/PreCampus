@@ -3,10 +3,11 @@ import { Input } from "../../input";
 
 interface Props {
   socialLinks: SocialLinkForm[];
+  disabled?: boolean;
   onChange: (links: SocialLinkForm[]) => void;
 }
 
-const SocialLinksFields = ({ socialLinks, onChange }: Props) => {
+const SocialLinksFields = ({ socialLinks, disabled, onChange }: Props) => {
   function updateLink(
     index: number,
     field: keyof SocialLinkForm,
@@ -29,6 +30,7 @@ const SocialLinksFields = ({ socialLinks, onChange }: Props) => {
           <Input
             label="Nome da rede social"
             value={link.name}
+            disabled={disabled}
             onChange={(v) => updateLink(index, "name", v)}
           />
 
@@ -36,6 +38,7 @@ const SocialLinksFields = ({ socialLinks, onChange }: Props) => {
             type="url"
             label="Link"
             value={link.url}
+            disabled={disabled}
             onChange={(v) => updateLink(index, "url", v)}
           />
         </div>
@@ -43,8 +46,9 @@ const SocialLinksFields = ({ socialLinks, onChange }: Props) => {
 
       <button
         type="button"
+        disabled={disabled}
         onClick={() => onChange([...socialLinks, { name: "", url: "" }])}
-        className="text-sm text-violet-600"
+        className={`text-sm ${disabled ? "cursor-not-allowed opacity-50" : "text-violet-600"}`}
       >
         + Adicionar rede social
       </button>

@@ -3,10 +3,11 @@ import { Input } from "../../input";
 
 interface Props {
   courses: UniversityCourseForm[];
+  disabled?: boolean;
   onChange: (courses: UniversityCourseForm[]) => void;
 }
 
-const CoursesFields = ({ courses, onChange }: Props) => {
+const CoursesFields = ({ courses, disabled, onChange }: Props) => {
   function updateCourse(
     index: number,
     field: keyof UniversityCourseForm,
@@ -29,12 +30,14 @@ const CoursesFields = ({ courses, onChange }: Props) => {
           <Input
             label={`Curso ${index + 1}`}
             value={course.name}
+            disabled={disabled}
             onChange={(v) => updateCourse(index, "name", v)}
           />
 
           <Input
             label="Descrição do curso"
             value={course.description}
+            disabled={disabled}
             onChange={(v) => updateCourse(index, "description", v)}
           />
         </div>
@@ -42,8 +45,9 @@ const CoursesFields = ({ courses, onChange }: Props) => {
 
       <button
         type="button"
+        disabled={disabled}
         onClick={() => onChange([...courses, { name: "", description: "" }])}
-        className="text-sm text-violet-600"
+        className={`text-sm ${disabled ? "cursor-not-allowed opacity-50" : "text-violet-600"}`}
       >
         + Adicionar curso
       </button>

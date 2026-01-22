@@ -7,7 +7,10 @@ export default function HeaderUser() {
 
   const config = headerConfig[user.role];
 
-  const displayName = user.fullName || user.corporateName || user.email;
+  const displayName =
+    ("fullName" in user && user.fullName) ||
+    ("corporateName" in user && user.corporateName) ||
+    user.email;
 
   return (
     <div className="mt-10 flex flex-col items-center gap-2">

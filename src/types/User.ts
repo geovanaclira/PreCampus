@@ -2,6 +2,15 @@ import type { Address } from "./AddressType";
 
 export type Role = "student" | "school" | "university" | "admin";
 
+export interface Course {
+  name: string;
+  description: string;
+}
+
+export interface SocialLink {
+  name: string;
+  url: string;
+}
 export interface BaseUser {
   id: string;
   email: string;
@@ -53,6 +62,10 @@ export interface UniversityUser extends BaseUser {
   corporateName: string;
   phone: string;
   description: string;
+  courses: Course[];
+  website?: string;
+  socialLinks: SocialLink[];
+  address: Address;
 }
 
 export type User = StudentUser | SchoolUser | UniversityUser;

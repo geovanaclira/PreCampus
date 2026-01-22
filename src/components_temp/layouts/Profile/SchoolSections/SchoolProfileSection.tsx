@@ -61,7 +61,6 @@ export default function SchoolProfileSection({ user }: Props) {
     await updateUser({
       corporateName: data.corporateName,
       phone: data.phone,
-      // email: NÃO atualiza (backend provavelmente bloqueia)
     });
   }
 

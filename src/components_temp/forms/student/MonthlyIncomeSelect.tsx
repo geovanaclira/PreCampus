@@ -20,7 +20,7 @@ export function MonthlyIncomeSelect({ value, disabled, onChange }: Props) {
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value) as MonthlyIncome)}
-        className="h-11 rounded-md border border-zinc-300 px-3"
+        className="h-11 rounded-md border border-zinc-300 px-3 bg-white"
       >
         <option value={MONTHLY_INCOME.NONE}>Selecione</option>
         <option value={MONTHLY_INCOME.UP_TO_1_MINIMUM}>

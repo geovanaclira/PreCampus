@@ -21,7 +21,7 @@ export function RelationshipSelect({
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(e.target.value, "")}
-        className="h-11 rounded-md border border-zinc-300 px-3"
+        className="h-11 rounded-md border border-zinc-300 px-3 bg-white"
       >
         <option value="">Selecione</option>
         <option value="Pai">Pai</option>

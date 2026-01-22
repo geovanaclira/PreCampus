@@ -33,6 +33,18 @@ export interface SchoolUser extends BaseUser {
   corporateName: string;
   phone: string;
   address: Address;
+
+  classes: {
+    firstYear: number;
+    secondYear: number;
+    thirdYear: number;
+  };
+
+  studentsCount: {
+    firstYear: number;
+    secondYear: number;
+    thirdYear: number;
+  };
 }
 
 /* ===================== UNIVERSITY ===================== */

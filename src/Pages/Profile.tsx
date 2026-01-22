@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { useAuth } from "../contexts/AuthContext";
 
-import type { StudentUser } from "../types/User";
+import type { SchoolUser, StudentUser } from "../types/User";
 import StudentProfileMainSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileMainSection";
 import StudentProfileAddressSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileAddressSection";
 import StudentProfileGuardianSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileGuardianSection";
 import StudentProfileInterestsSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileInterestsSection";
+import SchoolProfileSection from "../components_temp/layouts/Profile/SchoolSections/SchoolProfileSection";
 
 const Profile = () => {
   const { setTitle } = useHeader();
@@ -27,6 +28,10 @@ const Profile = () => {
           <StudentProfileGuardianSection user={user as StudentUser} />
           <StudentProfileInterestsSection user={user as StudentUser} />
         </div>
+      )}
+
+      {user.role === "school" && (
+        <SchoolProfileSection user={user as SchoolUser} />
       )}
     </div>
   );

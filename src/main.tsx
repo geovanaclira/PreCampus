@@ -17,6 +17,7 @@ import PainelEventos from "./pages/PainelEventos";
 import MyConfirmedEvents from "./pages/MyEvents";
 
 import "./index.css";
+import CreateEventScreen from "./Pages/CreateEvent";
 
 axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -27,10 +28,11 @@ export const router = createBrowserRouter([
     Component: MainLayout,
     children: [
       { index: true, Component: PainelEventos },
-      { path: "profile", Component: Profile },
-      { path: "favorites", Component: Favorites },
-      { path: "my-events", Component: MyConfirmedEvents },
-      { path: "event", Component: Event },
+      { path: "/profile", Component: Profile },
+      { path: "/favorites", Component: Favorites },
+      { path: "/my-events", Component: MyConfirmedEvents },
+      { path: "/event", Component: Event },
+      {path: "/events/create", Component: CreateEventScreen}
     ],
   },
   {

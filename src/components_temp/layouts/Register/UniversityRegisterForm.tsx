@@ -1,4 +1,5 @@
 import type { UniversityFormState } from "../../../types/UniversityFormState";
+import { AddressSection } from "../../forms/AddressSection";
 import CoursesFields from "../../forms/university/CoursesFields";
 import SocialLinksFields from "../../forms/university/SocialLinksFields";
 import { Input } from "../../input";
@@ -52,50 +53,10 @@ const UniversityRegisterForm = ({
       />
 
       {/* ENDEREÇO */}
-      <p className="text-sm font-medium">Endereço</p>
-
-      <Input
-        label="Rua"
-        value={form.address.street}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, street: v },
-          }))
-        }
-      />
-
-      <Input
-        label="Cidade"
-        value={form.address.city}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, city: v },
-          }))
-        }
-      />
-
-      <Input
-        label="Estado"
-        value={form.address.state}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, state: v },
-          }))
-        }
-      />
-
-      <Input
-        label="CEP"
-        value={form.address.cep}
-        onChange={(v) =>
-          setForm((prev) => ({
-            ...prev,
-            address: { ...prev.address, cep: v },
-          }))
-        }
+      <AddressSection
+        title="Endereço"
+        address={form.address}
+        onChange={(address) => setForm((prev) => ({ ...prev, address }))}
       />
 
       {/* CURSOS */}

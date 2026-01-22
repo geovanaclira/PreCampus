@@ -27,10 +27,10 @@ export const router = createBrowserRouter([
     Component: MainLayout,
     children: [
       { index: true, Component: PainelEventos },
-      { path: "/profile", Component: Profile },
-      { path: "/favorites", Component: Favorites },
-      { path: "/my-events", Component: MyConfirmedEvents },
-      { path: "/event", Component: Event },
+      { path: "profile", Component: Profile },
+      { path: "favorites", Component: Favorites },
+      { path: "my-events", Component: MyConfirmedEvents },
+      { path: "event", Component: Event },
     ],
   },
   {

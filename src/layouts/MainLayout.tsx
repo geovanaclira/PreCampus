@@ -33,14 +33,14 @@ const MainLayout = () => {
     loadProfile();
   }, []);
 
-  async function refreshUser() {
-    const { data } = await axios.get("/auth/profile");
-    setUser(data);
-  }
-
   async function updateUser(data: Partial<User>) {
     await axios.patch("/users/me", data);
     await refreshUser();
+  }
+
+  async function refreshUser() {
+    const { data } = await axios.get("/auth/profile");
+    setUser(data);
   }
 
   return (

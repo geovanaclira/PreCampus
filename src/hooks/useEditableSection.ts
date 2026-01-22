@@ -22,12 +22,5 @@ export function useEditableSection<T>(initialData: T) {
     setIsEditing(false);
   }
 
-  return {
-    isEditing,
-    data,
-    setData,
-    startEditing,
-    cancelEditing,
-    saveEditing,
-  };
+  return { isEditing, data, setData, startEditing, cancelEditing, saveEditing };
 }

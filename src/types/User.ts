@@ -16,12 +16,14 @@ export interface StudentUser extends BaseUser {
   monthlyIncome: number;
   interestedCourses: string[];
   interestedUniversities: string[];
-  address?: Address;
+  address: Address;
   guardian?: {
     fullName: string;
+    cpf: string;
     relationship: string;
     email: string;
-    address?: Address;
+    otherRelationship?: string;
+    address: Address;
   };
 }
 

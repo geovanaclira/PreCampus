@@ -33,7 +33,7 @@ export default function SideMenu({ open, onClose }: Props) {
 
   return (
     <aside
-      className={`custom-scrollbar fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto bg-white shadow-xl transition-transform ${
+      className={`custom-scrollbar fixed top-0 left-0 z-50 h-full w-45 overflow-y-auto bg-white shadow-xl transition-transform ${
         open ? "translate-x-0" : "-translate-x-full  "
       } xl:translate-x-0 `}
     >

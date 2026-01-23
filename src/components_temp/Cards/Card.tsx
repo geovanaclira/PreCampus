@@ -33,7 +33,12 @@ export function Card({
       <div className="flex items-center justify-between p-3">
         <h3 className="text-sm font-semibold">{title}</h3>
 
-        <button onClick={onToggleFavorite}>
+        <button onClick={(e) => {
+            e.preventDefault(); 
+            e.stopPropagation();  
+            onToggleFavorite();
+          }}
+        >
           <Heart
             size={25}
             style={{

@@ -4,11 +4,13 @@ import {
   MapPinIcon,
   IdentificationIcon,
 } from "@heroicons/react/24/outline";
+import Footer from "../components_temp/common/Footer";
 
 export function Event() {
   const [showModal, setShowModal] = useState(false);
 
   return (
+    <>
     <div className="relative min-h-screen bg-gray-100">
       <div className="mx-auto max-w-3xl p-4">
         <div className="mb-5 h-52 rounded-lg bg-blue-600 md:h-64"></div>
@@ -82,5 +84,7 @@ export function Event() {
         </div>
       )}
     </div>
+    <Footer/>
+    </>
   );
 }

@@ -4,17 +4,16 @@ import ReactDOM from "react-dom/client";
 
 import React from "react";
 
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
 import MainLayout from "./layouts/MainLayout";
-import Profile from "./pages/Profile";
-import Register from "./pages/register";
-import Favorites from "./pages/Favorites";
-import RecoverRequest from "./pages/PasswordRecovery/Request";
-import RecoverReset from "./pages/PasswordRecovery/Reset";
-import RecoverSuccess from "./pages/PasswordRecovery/Sucess";
-import { Event } from "./pages/event";
-import PainelEventos from "./pages/PainelEventos";
-import MyConfirmedEvents from "./pages/MyEvents";
+import Profile from "./Pages/Profile";
+import Register from "./Pages/register";
+import RecoverRequest from "./Pages/PasswordRecovery/Request";
+import RecoverReset from "./Pages/PasswordRecovery/Reset";
+import RecoverSuccess from "./Pages/PasswordRecovery/Sucess";
+import { Event } from "./Pages/event";
+import PainelEventos from "./Pages/PainelEventos";
+import MyConfirmedEvents from "./Pages/MyEvents";
 
 import "./index.css";
 import CreateEventScreen from "./Pages/CreateEvent";
@@ -29,7 +28,6 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: PainelEventos },
       { path: "/profile", Component: Profile },
-      { path: "/favorites", Component: Favorites },
       { path: "/my-events", Component: MyConfirmedEvents },
       { path: "/event", Component: Event },
       {path: "/events/create", Component: CreateEventScreen}

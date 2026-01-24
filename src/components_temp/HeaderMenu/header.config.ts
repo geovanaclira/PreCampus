@@ -1,7 +1,6 @@
 import {
   Calendar,
   User,
-  Heart,
   BarChart3,
   Plus,
   CalendarCheck,
@@ -22,7 +21,6 @@ export const headerConfig = {
       { name: "Eventos", icon: Calendar, to: "/" },
       { name: "Perfil", icon: User, to: "/profile" },
       { name: "Meus Eventos", icon: CalendarCheck, to: "/my-events" },
-      { name: "Favoritos", icon: Heart, to: "/favorites" },
     ],
   },
 
@@ -33,7 +31,6 @@ export const headerConfig = {
     menu: [
       { name: "Eventos", icon: Calendar, to: "/" },
       { name: "Perfil", icon: User, to: "/profile" },
-      { name: "Dashboard", icon: BarChart3, to: "/dashboard" },
       { name: "Criar Evento", icon: Plus, to: "/events/create" },
     ],
   },

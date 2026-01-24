@@ -1,6 +1,7 @@
 import { CalendarDays, MapPin, CheckCircle, Heart } from "lucide-react";
 import { useHeader } from "../contexts/HeaderContext";
 import { useEffect } from "react";
+import Footer from "../components_temp/common/Footer";
 
 interface Event {
   id: number;
@@ -54,6 +55,7 @@ const MyConfirmedEvents = () => {
   }, [setTitle]);
 
   return (
+    <>
     <div className="bg-slate-100 flex justify-center py-10">
       <div className="w-full max-w-4xl bg-slate-200 rounded-xl shadow-md p-8">
         <div className="bg-white rounded-lg shadow p-4 mb-6">
@@ -155,6 +157,8 @@ const MyConfirmedEvents = () => {
         ))}
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

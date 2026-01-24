@@ -9,6 +9,7 @@ import StudentProfileGuardianSection from "../components_temp/layouts/Profile/St
 import StudentProfileInterestsSection from "../components_temp/layouts/Profile/StudentSections/StudentProfileInterestsSection";
 import SchoolProfileSection from "../components_temp/layouts/Profile/SchoolSections/SchoolProfileSection";
 import UniversityProfileSection from "../components_temp/layouts/Profile/UniversitySections/UniversityProfileSection";
+import Footer from "../components_temp/common/Footer";
 
 const Profile = () => {
   const { setTitle } = useHeader();
@@ -21,6 +22,7 @@ const Profile = () => {
   if (!user) return null;
 
   return (
+    <>
     <div className="flex flex-col items-center py-4">
       {user.role === "student" && (
         <div className="flex w-full flex-col items-center gap-4">
@@ -50,6 +52,8 @@ const Profile = () => {
         />
       )}
     </div>
+    <Footer/>
+    </>
   );
 };
 

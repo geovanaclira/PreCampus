@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Card } from "../components_temp/Cards/Card";
+import Footer from "../components_temp/common/Footer";
 
 interface Evento {
   id: number;
@@ -60,6 +61,7 @@ export default function PainelEventos() {
   };
 
   return (
+    <>
     <div className="mx-auto grid p-10 max-w-6xl grid-cols-1 gap-6 px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {eventos.map((evento) => (
         <Card
@@ -72,5 +74,7 @@ export default function PainelEventos() {
         />
       ))}
     </div>
+    <Footer/>
+    </>
   );
 }
